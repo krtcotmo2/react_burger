@@ -10,6 +10,7 @@ const PRICING = {
   lettuce:0.5
 }
 
+
 class Configurator extends Component {
   state = { 
     ingredientList: [  
@@ -19,6 +20,7 @@ class Configurator extends Component {
   }
 
   addedIng = ingType =>{
+    console.log(ingType)
     const newList = [...this.state.ingredientList];
     newList.unshift({type:ingType, cost:PRICING[ingType]});
     const newTotal = this.state.totalPrice + PRICING[ingType];
@@ -31,12 +33,17 @@ class Configurator extends Component {
     const newTotal = this.state.totalPrice - PRICING[ingType];
     this.setState({ingredientList: newList, totalPrice:newTotal})
   }
+  toggleBuns = (event) =>{
+    const bunStatus = event.target.checked
+    this.setState({isGluttenFree: bunStatus});
+  }
 
+  
   render(){ 
     return (
         <Auxillary>
           <Visaulization ingredientList={this.state.ingredientList} isGluttenFree={this.state.isGluttenFree} price={this.state.totalPrice}/>
-          <AddIngredients addedIng={this.addedIng} removedIng={this.removeIng}/>
+          <AddIngredients addedIng={this.addedIng} removedIng={this.removeIng} toggleBuns={this.toggleBuns}/>
         </Auxillary>
     )}
 }
