@@ -16,11 +16,15 @@ class Configurator extends Component {
     isGluttenFree:false,
   }
 
+  addedIng = ingType =>{
+    console.log(ingType)
+  }
+
   render(){ 
     return (
         <Auxillary>
           <Visaulization ingredientList={this.state.ingredientList} isGluttenFree={this.state.isGluttenFree}/>
-          <AddIngresients/>
+          <AddIngresients addedIng={this.addedIng}/>
         </Auxillary>
     )}
 }

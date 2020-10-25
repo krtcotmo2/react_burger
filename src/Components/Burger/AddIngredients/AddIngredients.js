@@ -1,10 +1,15 @@
 import React from 'react';
 import Auxillary from '../../../HOC/Auxillary'
+import LineControl from './LineControl/LineControl';
 
-const AddIngredients = () => {
+const controlsList = ['Beef','Cheese','Bacon','Lettuce'];
+
+const AddIngredients = (props) => {
+  const controls = controlsList.map( (item,i) => <LineControl itemType={item} addedIng={props.addedIng} key={item+i}/>)
+  
   return ( 
     <Auxillary>
-      <p>Control to add items</p>
+      {controls}
     </Auxillary>
    );
 }

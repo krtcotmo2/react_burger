@@ -14,7 +14,6 @@ figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	border: 0;
-  vertical-align: baseline;
   box-sizing: border-box;
   font-family: 'Source Sans Pro', sans-serif;
 }

@@ -1,0 +1,70 @@
+.ingItem{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin:0px auto;
+  width:80%;
+}
+.ingItem h3{
+  display: inline-block;
+  width:100px;
+}
+.ingItem button{
+  display: block;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 34px;
+  width:36px;
+  height: 36px;
+  cursor: pointer;
+  outline: none;
+}
+
+.ingItem button:disabled {
+  background-color: #AC9980;
+  border: 1px solid #7E7365;
+  color: #ccc;
+  cursor: default;
+}
+
+.ingItem button:hover:disabled {
+  background-color: #AC9980;
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.ingItem .remove {  
+  background-color: #f5b5c8;
+}
+
+.ingItem .add {
+  background-color: #dcf8a7;
+}
+
+.ingItem .remove:hover, .ingItem .remove:active {  
+  background-color: #ff3333;
+  color: white;
+}
+
+.ingItem .add:hover,.ingItem .add:active {
+  background-color: #00a816;
+  color: white;
+}
+
+@media (min-width: 1000px) and (min-height: 700px){
+  .ingItem{
+    width:560px;
+  }
+}
+
+@media (min-width: 500px) and (min-height: 401px){
+  .ingItem{
+    width:360px;
+  }
+}
+
+@media (min-width: 500px) and (min-height: 1px){
+  .ingItem{
+    width:280px;
+  }
+}
