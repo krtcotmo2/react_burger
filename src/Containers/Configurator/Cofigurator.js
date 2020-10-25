@@ -6,12 +6,7 @@ import AddIngresients from '../../Components/Burger/AddIngredients/AddIngredient
 class Configurator extends Component {
   state = { 
     ingredientList: [
-      {type:'lettuce', cost:.5}, 
-      {type:'bacon', cost:1.99},  
-      {type:'cheese', cost:1}, 
-      {type:'cheese', cost:1},   
-      {type:'meat', cost:5.99},  
-      {type:'meat', cost:5.99},   
+      
     ],
     isGluttenFree:false,
   }
