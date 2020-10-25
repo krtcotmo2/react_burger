@@ -47,7 +47,7 @@ class Configurator extends Component {
         <Auxillary>
           <h3 style={{textAlign:'center'}}> Price: ${this.state.totalPrice.toFixed(2)}</h3>   
           <Visaulization ingredientList={this.state.ingredientList} isGlutenFree={this.state.isGlutenFree} />
-          <AddIngredients addedIng={this.addedIng}  removedIng={this.removeIng} toggleBuns={this.toggleBuns} arr={this.state.ingredientList} />
+          <AddIngredients addedIng={this.addedIng}  removedIng={this.removeIng} toggleBuns={this.toggleBuns} ingAarr={this.state.ingredientList} />
         </Auxillary>
     )}
 }

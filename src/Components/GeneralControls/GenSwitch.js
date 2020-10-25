@@ -18,7 +18,7 @@ const BlueSwitch = withStyles({
   track: {},
 })(Switch);
 
-const GebSwitch = (props) => {
+const GenSwitch = (props) => {
   return ( 
     <FormControlLabel 
     control={<BlueSwitch
@@ -30,4 +30,4 @@ const GebSwitch = (props) => {
    );
 }
  
-export default GebSwitch;
+export default GenSwitch;

@@ -1,5 +1,6 @@
 import React from 'react';
 import LineControl from './LineControl/LineControl';
+import addStyles from './AddIng.module.css'
 import { withStyles } from '@material-ui/core/styles';
 import { blueGrey } from '@material-ui/core/colors';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -35,14 +36,15 @@ const AddIngredients = (props) => {
     addedIng={() => props.addedIng(item.toLowerCase())} 
     removedIng={() => props.removedIng(item.toLowerCase())} 
     key={item+i}
-    disabled={props.arr.filter(arg => arg.type === item.toLowerCase()).length === 0}/>)
+    disabled={props.ingAarr.filter(arg => arg.type === item.toLowerCase()).length === 0}/>)
   
   return ( 
-    <div style={{display:'flex', flexDirection:'column', justifyContent:'center'}}>
-      {/* {theSwitch} */}
+    <div style={{display:'flex', flexDirection:'column', justifyContent:'center'}}>      
       <GenSwitch title="Gluten Free" checked={props.isGlutenFree} onChange={props.toggleBuns}  />
       {ingRows}
-    </div>
+      <button className={addStyles.OrderButton} disabled={props.ingAarr.length === 0}>ADD TO ORDER</button>
+    </div>      
+    /* {theSwitch}//Built in file - GenSwitch is out of file */
    );
 }
  
