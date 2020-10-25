@@ -22,6 +22,7 @@ const Visualization = (props) => {
       {topBun}
       {burgerStack}
       {bottomBun}
+      <p>${props.price.toFixed(2)}</p>
     </div>
    );
 }

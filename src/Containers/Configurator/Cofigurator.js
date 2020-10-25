@@ -1,30 +1,42 @@
 import React, { Component } from 'react';
 import Auxillary from '../../HOC/Auxillary';
 import Visaulization from '../../Components/Burger/Visualization/Visualization';
-import AddIngresients from '../../Components/Burger/AddIngredients/AddIngredients'
+import AddIngredients from '../../Components/Burger/AddIngredients/AddIngredients'
+
+const PRICING = {
+  beef:1.3,
+  cheese:0.4,
+  bacon:0.7,
+  lettuce:0.5
+}
 
 class Configurator extends Component {
   state = { 
-    ingredientList: [
-      {type:'lettuce', cost:.5}, 
-      {type:'bacon', cost:1.99},  
-      {type:'cheese', cost:1}, 
-      {type:'cheese', cost:1},   
-      {type:'meat', cost:5.99},  
-      {type:'meat', cost:5.99},   
+    ingredientList: [  
     ],
     isGluttenFree:false,
+    totalPrice:4
   }
 
   addedIng = ingType =>{
-    console.log(ingType)
+    const newList = [...this.state.ingredientList];
+    newList.unshift({type:ingType, cost:PRICING[ingType]});
+    const newTotal = this.state.totalPrice + PRICING[ingType];
+    this.setState({ingredientList: newList, totalPrice:newTotal})
+  }
+  removeIng = ingType =>{
+    const newList = [...this.state.ingredientList];
+    const ind = newList.findIndex(item => item.type === ingType);
+    newList.splice(ind,1);
+    const newTotal = this.state.totalPrice - PRICING[ingType];
+    this.setState({ingredientList: newList, totalPrice:newTotal})
   }
 
   render(){ 
     return (
         <Auxillary>
-          <Visaulization ingredientList={this.state.ingredientList} isGluttenFree={this.state.isGluttenFree}/>
-          <AddIngresients addedIng={this.addedIng}/>
+          <Visaulization ingredientList={this.state.ingredientList} isGluttenFree={this.state.isGluttenFree} price={this.state.totalPrice}/>
+          <AddIngredients addedIng={this.addedIng} removedIng={this.removeIng}/>
         </Auxillary>
     )}
 }

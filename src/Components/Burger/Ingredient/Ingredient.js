@@ -16,8 +16,8 @@ const Ingredient = (props) => {
         </div>
       );
       break;
-    case 'meat':
-      ingredient = <div className={visStyles.Meat}></div>;
+    case 'beef':
+      ingredient = <div className={visStyles.Beef}></div>;
       break;
     case 'cheese':
       ingredient = <div className={visStyles.Cheese}></div>;
