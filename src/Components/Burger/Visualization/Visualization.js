@@ -10,9 +10,11 @@ const Visualization = (props) => {
   [props.ingredientList]);
 
   const topBun = props.isGluttenFree ? null : <Ingredient type='bread-top' key='Topbun0'/>;
-  const burgerStack = props.ingredientList.length === 0 ? <p className={visStyles.emptyBurger}>Start building your burger</p> : props.ingredientList.map( (ing, i) => {
-    return (<Ingredient type={ing.type} key={ing.type+i+1}/>)
-  });
+  const burgerStack = props.ingredientList.length === 0 ? 
+    <p className={visStyles.emptyBurger}>Start building your burger</p> : 
+    props.ingredientList.map( (ing, i) => {
+      return (<Ingredient type={ing.type} key={ing.type+i+1}/>)
+    });
   const bottomBun = props.isGluttenFree ? null : <Ingredient type='bread-bottom' key='Bottombun0'/>;
   
   return ( 
