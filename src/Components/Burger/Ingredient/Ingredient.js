@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const Ingredient = (props) => {
   let ingredient = null;
   switch(props.type){
-    case 'bread-bottom':
+    case 'bottom bun':
       ingredient = <div className={visStyles.BreadBottom}></div>;
       break;
     case 'bread-top':

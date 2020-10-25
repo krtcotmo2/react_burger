@@ -7,7 +7,8 @@ const PRICING = {
   beef:1.3,
   cheese:0.4,
   bacon:0.7,
-  lettuce:0.5
+  lettuce:0.5,
+  'bottom bun':0.2
 }
 
 
@@ -15,8 +16,8 @@ class Configurator extends Component {
   state = { 
     ingredientList: [  
     ],
-    isGluttenFree:false,
-    totalPrice:4
+    isGlutenFree:false,
+    totalPrice:4,
   }
 
   addedIng = ingType =>{
@@ -29,21 +30,24 @@ class Configurator extends Component {
   removeIng = ingType =>{
     const newList = [...this.state.ingredientList];
     const ind = newList.findIndex(item => item.type === ingType);
+    if(ind=== -1) return;
     newList.splice(ind,1);
     const newTotal = this.state.totalPrice - PRICING[ingType];
     this.setState({ingredientList: newList, totalPrice:newTotal})
   }
   toggleBuns = (event) =>{
     const bunStatus = event.target.checked
-    this.setState({isGluttenFree: bunStatus});
+    this.setState({isGlutenFree: bunStatus});
   }
 
   
   render(){ 
+
     return (
         <Auxillary>
-          <Visaulization ingredientList={this.state.ingredientList} isGluttenFree={this.state.isGluttenFree} price={this.state.totalPrice}/>
-          <AddIngredients addedIng={this.addedIng} removedIng={this.removeIng} toggleBuns={this.toggleBuns}/>
+          <h3 style={{textAlign:'center'}}> Price: ${this.state.totalPrice.toFixed(2)}</h3>   
+          <Visaulization ingredientList={this.state.ingredientList} isGlutenFree={this.state.isGlutenFree} />
+          <AddIngredients addedIng={this.addedIng}  removedIng={this.removeIng} toggleBuns={this.toggleBuns} arr={this.state.ingredientList} />
         </Auxillary>
     )}
 }

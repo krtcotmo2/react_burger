@@ -5,9 +5,9 @@ const Layout = (props) => {
   return (  
     <Auxillary>
       <div>
-        <p>Nav Bar</p>
-        <p>Side Drawer</p>
-        <p>Backdrop</p>
+        <span>Nav Bar</span>
+        <span>Side Drawer</span>
+        <span>Backdrop</span>
       </div>
       <main className={layoutStlye.content} >
         {props.children}
