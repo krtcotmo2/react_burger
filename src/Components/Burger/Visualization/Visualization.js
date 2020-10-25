@@ -12,11 +12,13 @@ const Visualization = (props) => {
   const burgerStack = props.ingredientList.map( (ing, i) => {
     return (<Ingredient type={ing.type} key={ing.type+i+1}/>)
   });
+  const topBun = props.isGluttenFree ? null : <Ingredient type='bread-top' key='Topbun0'/>;
+  const bottomBun = props.isGluttenFree ? null : <Ingredient type='bread-bottom' key='Bottombun0'/>;
   return ( 
     <div className={visStyles.burger}>     
-      {props.isGluttenFree ? null : <Ingredient type='bread-top' key='Topbun0'/>}
+      {topBun}
       {burgerStack}
-      {props.isGluttenFree ? null : <Ingredient type='bread-bottom' key='Bottombun0'/>}
+      {bottomBun}
     </div>
    );
 }
