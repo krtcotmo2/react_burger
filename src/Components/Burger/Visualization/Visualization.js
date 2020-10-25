@@ -6,10 +6,13 @@ const Visualization = (props) => {
   
   return ( 
     <div className={visStyles.burger}>
-      <Ingredient type='bread-top'/>
+      {props.ingredientList.map( (ing, i) => {
+        return(<Ingredient type={ing.type} key={i}/>)
+      })}
+      {/* <Ingredient type='bread-top'/>
       <Ingredient type='cheese'/>   
       <Ingredient type='meat'/>   
-      <Ingredient type='bread-bottom'/>
+      <Ingredient type='bread-bottom'/> */}
     </div>
    );
 }
