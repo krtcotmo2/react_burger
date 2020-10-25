@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Auxillary from '../../HOC/Auxillary';
-import Visaulization from '../../Components/Burger/Visualization/Visualization'
+import Visaulization from '../../Components/Burger/Visualization/Visualization';
+import AddIngresients from '../../Components/Burger/AddIngredients/AddIngredients'
 
 class Configurator extends Component {
   state = { 
@@ -19,7 +20,7 @@ class Configurator extends Component {
     return (
         <Auxillary>
           <Visaulization ingredientList={this.state.ingredientList} isGluttenFree={this.state.isGluttenFree}/>
-          <div>Controls to add ingredients</div>
+          <AddIngresients/>
         </Auxillary>
     )}
 }
