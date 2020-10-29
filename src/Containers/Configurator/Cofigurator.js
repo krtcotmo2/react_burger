@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Auxillary from '../../HOC/Auxillary';
 import Visaulization from '../../Components/Burger/Visualization/Visualization';
-import AddIngredients from '../../Components/Burger/AddIngredients/AddIngredients'
+import AddIngredients from '../../Components/Burger/AddIngredients/AddIngredients';
+import Modal from '../../Components/GeneralControls/Modal/Modal';
+import OrderSummary from '../../Components/Burger/OrderSummary/OrderSummary'
 
 const PRICING = {
   beef:1.3,
@@ -18,10 +20,10 @@ class Configurator extends Component {
     ],
     isGlutenFree:false,
     totalPrice:4,
+    showModal: false
   }
 
   addedIng = ingType =>{
-    console.log(ingType)
     const newList = [...this.state.ingredientList];
     newList.unshift({type:ingType, cost:PRICING[ingType]});
     const newTotal = this.state.totalPrice + PRICING[ingType];
@@ -39,15 +41,26 @@ class Configurator extends Component {
     const bunStatus = event.target.checked
     this.setState({isGlutenFree: bunStatus});
   }
-
+  modalHandler = () => {
+    this.setState({showModal: true});
+  }
+  hideModal = () => {
+    this.setState({showModal: false});
+    //this.setState({showModal: false, ingredientList:[], totalPrice:4});
+  }
+  processOrder=()=>{
+    this.setState({showModal: false});
+  }
   
   render(){ 
-
     return (
         <Auxillary>
+          <Modal show={this.state.showModal} hide={this.hideModal}>
+            <OrderSummary ingredients={this.state.ingredientList} price={this.state.totalPrice} isGlutenFree={this.state.isGlutenFree} hide={this.hideModal} process={this.processOrder}/>             
+          </Modal>
           <h3 style={{textAlign:'center'}}> Price: ${this.state.totalPrice.toFixed(2)}</h3>   
           <Visaulization ingredientList={this.state.ingredientList} isGlutenFree={this.state.isGlutenFree} />
-          <AddIngredients addedIng={this.addedIng}  removedIng={this.removeIng} toggleBuns={this.toggleBuns} ingAarr={this.state.ingredientList} />
+          <AddIngredients addedIng={this.addedIng}  removedIng={this.removeIng} toggleBuns={this.toggleBuns} ingArr={this.state.ingredientList} showModal={this.modalHandler} />
         </Auxillary>
     )}
 }

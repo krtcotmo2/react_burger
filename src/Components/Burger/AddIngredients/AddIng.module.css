@@ -1,4 +1,12 @@
 
+.controlContainer{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  border-top:2px solid #ccc;
+  padding-top:12px
+}
+
 .OrderButton {
   background-color: #c3f595;
   outline: none;

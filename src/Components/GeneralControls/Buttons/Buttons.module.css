@@ -1,0 +1,25 @@
+.button {
+  background-color: transparent;
+  border: none;
+  color: black;
+  outline: none;
+  cursor: pointer;
+  font: inherit;
+  padding: 10px;
+  margin: 10px;
+  font-weight: bold;
+  border: 1px solid black;
+}
+
+.button:first-of-type {
+  margin-left: 0;
+
+}
+
+.continue {
+  color: #5C9210;
+}
+
+.cancel {
+  color: #944317;
+}
