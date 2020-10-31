@@ -7,7 +7,7 @@ import addStyles from './AddIng.module.css'
 //import Switch from '@material-ui/core/Switch';
 import GenSwitch from '../../GeneralControls/Switch/GenSwitch';
 
-const controlsList = ['Beef','Cheese','Bacon','Lettuce','Bottom Bun'];
+let controlsList = ['Beef','Cheese','Bacon','Lettuce','Bottom Bun'];
 
 // const GlutenFreeSwitch = withStyles({
 //   switchBase: {
@@ -31,14 +31,17 @@ const AddIngredients = (props) => {
   //     onChange={props.toggleBuns} />} 
   //   label="Glutten Free" 
   //   style={{margin:'0 auto'}}/>);
-
-  const ingRows = controlsList.map( (item,i) => <LineControl 
+  
+  controlsList = props.avaiableIng;  
+  let ingRows = Object.keys(controlsList).map( (item,i) => <LineControl 
     itemType={item} 
     addedIng={() => props.addedIng(item.toLowerCase())} 
     removedIng={() => props.removedIng(item.toLowerCase())} 
     key={item+i}
     disabled={props.ingArr.filter(arg => arg.type === item.toLowerCase()).length === 0}/>)
-  
+  if(controlsList.length === 0){
+    ingRows = (<h2 style={{textAlign:'center'}}>Unable to load ingredients</h2>);
+  }
   return ( 
     <div className={addStyles.controlContainer}>      
       <GenSwitch title="Gluten Free" checked={props.isGlutenFree} onChange={props.toggleBuns}  />

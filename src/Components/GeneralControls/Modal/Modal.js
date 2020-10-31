@@ -5,8 +5,8 @@ import Aux from '../../../HOC/Auxillary';
 
 class Modal extends Component {
   shouldComponentUpdate =(nextProps, nextState) => {
-    console.log('modal should update', nextProps.show, this.props.show);
-    return nextProps.show !== this.props.show;
+    //console.log('modal should update', nextProps.show, this.props.show);
+    return nextProps.show !== this.props.show || nextProps.children !== this.props.children;
   }
 
   componentDidUpdate = () => {
@@ -24,7 +24,7 @@ class Modal extends Component {
           }>
           {this.props.children}
         </div>
-        <Backdrop show = {this.props.show} hide={this.props.hide}/>
+        <Backdrop show={this.props.show} hide={this.props.hide}/>
       </Aux>
      );
   }
